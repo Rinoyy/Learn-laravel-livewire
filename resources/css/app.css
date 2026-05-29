@@ -2,8 +2,158 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+html {
+    font-feature-settings: "cv02","cv03","cv04","cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0;
+}
+
+:root {
+    --brand-gradient-start: #1d4ed8;
+    --brand-gradient-mid: #2563eb;
+    --brand-gradient-end: #0ea5e9;
+    --brand-gradient: linear-gradient(
+        135deg,
+        var(--brand-gradient-start) 0%,
+        var(--brand-gradient-mid) 50%,
+        var(--brand-gradient-end) 100%
+    );
+    --brand-gradient-hover: linear-gradient(
+        135deg,
+        #1e40af 0%,
+        #1d4ed8 50%,
+        #0284c7 100%
+    );
+
+    --primary: 217 91% 45%;
+    --background: 220 16% 97%;
+    --foreground: 222 47% 9%;
+    --border: 214 20% 88%;
+    --muted-foreground: 215 18% 46%;
+    --ring: 217 91% 45%;
+    --table-header-bg: 210 25% 97%;
+    --table-row-hover: 214 60% 96%;
+    --surface-raised: 0 0% 100%;
+}
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --radius-none: 0;
+    --color-primary: #2563eb;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-border: hsl(var(--border));
+}
+
+.btn-brand-gradient {
+    background: var(--brand-gradient);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.btn-brand-gradient:hover {
+    background: var(--brand-gradient-hover);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+}
+
+.btn-brand-gradient:disabled {
+    cursor: not-allowed;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.app-shell-gradient {
+    @apply h-screen overflow-hidden bg-[hsl(var(--background))] font-sans text-neutral-900;
+}
+
+.app-page-auth {
+    @apply min-h-screen font-sans;
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.07) 1px, transparent 0);
+    background-size: 28px 28px;
+}
+
+.auth-card {
+    @apply border border-neutral-200 bg-white p-8 shadow-sm;
+}
+
+.corporate-panel {
+    @apply border border-neutral-200 bg-white shadow-sm;
+}
+
+.sidebar-active-item {
+    background-color: rgba(37, 99, 235, 0.07);
+    border-left: 2px solid #2563eb;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+.header-accent-bar {
+    position: relative;
+}
+
+.header-accent-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--brand-gradient);
+    opacity: 0.85;
+}
+
+.quota-gradient-bar {
+    background: var(--brand-gradient);
+    height: 3px;
+}
+
+.btn-table-view {
+    @apply inline-flex items-center border border-neutral-300 bg-white px-2.5 py-1 text-[12px] font-medium text-neutral-700 transition-colors hover:border-neutral-400 hover:bg-neutral-50;
+}
+
+.dashboard-table-head-row {
+    @apply border-b border-neutral-200 bg-[hsl(var(--table-header-bg))] text-xs font-semibold uppercase tracking-wider text-neutral-500;
+}
+
+.dashboard-table-head-cell {
+    @apply whitespace-nowrap px-4 py-2 font-semibold;
+}
+
+.dashboard-table-cell {
+    @apply border-b border-neutral-100 px-4 py-2 text-[13px] text-neutral-700;
+}
+
+.dashboard-table-cell-muted {
+    @apply border-b border-neutral-100 px-4 py-2 text-[13px] text-neutral-500;
+}
+
+.dashboard-table-action {
+    @apply text-sm font-semibold text-blue-600 transition-colors hover:text-blue-800;
+}
+
+.dashboard-table-row {
+    @apply bg-white transition-colors hover:bg-[hsl(var(--table-row-hover))];
+}
+
+.corporate-input {
+    @apply h-9 w-full border border-neutral-200 bg-white px-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600;
+}
+
+.corporate-select {
+    @apply h-9 border border-neutral-200 bg-white px-3 text-sm text-neutral-700 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600;
 }
